@@ -1,18 +1,16 @@
 'use strict';
 
 function createGreeting(name, age) {
-    if (!name && !age){
-        throw new Error("Arguments not valid");
-    }
+    const validAge = checkAgeValidity(age);
     const yearOfBirth = 2019 - age;
-    return `Hi, my name is Chris and I'm 29 years old. I was born in ${yearOfBirth}`;
+    return `Hi, my name is ${name} and I'm ${validAge} years old. I was born in ${yearOfBirth}`;
 }
 
 function getYearOfBirth(age) {
     return 2019 - age;
 }
 
-function yearOfBirth(age) {
+function checkAgeValidity(age) {
     if (age < 0) {
         throw new Error("Age can not be negative");
     }
@@ -20,9 +18,8 @@ function yearOfBirth(age) {
 }
 
 try {
-    const greeting1 = createGreeting('Jeff', '29');
-} catch(e) {
+        const greeting1 = createGreeting('Chris', -1);
+        console.log(greeting1);
+    } catch(e) {
         console.log(`${e.name}: ${e.message}`);
-}
-
-console.log(greeting1);
+    }
